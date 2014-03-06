@@ -1,6 +1,7 @@
 int numPoints = 250;
 int numEdges = 750;
 int mode = 0;
+int STROKE_WEIGHT = 1;
 Edge[] edges = new Edge[numEdges];
 Walker[] points = new Walker[numPoints];
 
@@ -23,6 +24,8 @@ void draw() {
   rect(0, 0, width, height);
 
   //background(0);
+  
+  
 
   moveAllWalkers();
   drawNetwork();
@@ -72,7 +75,7 @@ void drawNetwork() {
 }
 
 void mousePressed() {
-  saveFrame("prims#####.jpg");
+  saveFrame("/saves/prims#####.jpg");
 }
 
 void keyPressed() {
@@ -85,13 +88,32 @@ println(keyCode);
     println("closer y is cheaper");
     mode = 2;
   }
-  if (keyCode == 67) {
+  if (keyCode == 67) {//c
     println("center is cheaper");
     mode = 3;
   }
-  if (keyCode == 86){
+  if (keyCode == 86){//v
     println("distance == cost");
     mode = 0;
   }
+  if (keyCode == 66){//b
+    if (STROKE_WEIGHT > 1){
+      println("THINNER");
+      STROKE_WEIGHT --;
+      strokeWeight(STROKE_WEIGHT);
+    }
+  }
+  
+   if (keyCode == 78){//n    
+   if (STROKE_WEIGHT < 15){
+     println("BOLDER");
+      STROKE_WEIGHT ++;
+      strokeWeight(STROKE_WEIGHT);
+    }
+   }
+   
+   if (keyCode == 83){
+    saveFrame("prims###.jpg"); 
+   }
 }
 
