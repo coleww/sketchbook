@@ -13,8 +13,6 @@ void setup() {
   opencv.loadCascade(OpenCV.CASCADE_FRONTALFACE);  
   cat = loadImage("kitteh.png");
   video.start();
-
-
 }
 
 void draw() {
@@ -30,10 +28,8 @@ void draw() {
   println(faces.length);
 
   for (int i = 0; i < faces.length; i++) {
-      imageMode(CENTER);
-    image(cat, faces[i].x + faces[i].width/2, faces[i].y + faces[i].height/2, faces[i].width * 1.5, faces[i].height * 2.5);
-    
-    
+    imageMode(CENTER);
+    image(cat, faces[i].x + faces[i].width / 2, faces[i].y + faces[i].height / 2, faces[i].width * 1.5, faces[i].height * 2.5);
     //rect(faces[i].x, faces[i].y, faces[i].width, faces[i].height);
   }
 }

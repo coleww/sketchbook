@@ -6,7 +6,7 @@ float deg;
 void setup() {
 
   for (int i = 0; i<shiffmans.length; i++) {
-    shiffmans[i] = loadImage("shiffman" + (i+1) + ".png");
+    shiffmans[i] = loadImage("/shiffmen/shiffman" + (i+1) + ".png");
   }
   background(255);
   size (640, 480);

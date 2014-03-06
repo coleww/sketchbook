@@ -1,4 +1,6 @@
 # DAMIEN HIRST GENERATOR
 
-makes spot paintings. 
+Makes spot paintings.
+Forever. 
 $$$$$$$$$$
+![Hirst Dots](./example.gif "Hirst Dots")

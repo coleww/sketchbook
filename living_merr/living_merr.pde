@@ -3,7 +3,7 @@ PImage[] strokes = new PImage[s];
 
 void setup() {
   for (int i = 0; i<strokes.length; i++) {
-    strokes[i] = loadImage("stroke_" + (i+1) + ".png");
+    strokes[i] = loadImage("/strokes/stroke_" + (i+1) + ".png");
   }
   size(1280, 960);
   background(0);
