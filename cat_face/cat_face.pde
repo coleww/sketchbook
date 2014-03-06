@@ -1,8 +1,8 @@
 import gab.opencv.*;
 import processing.video.*;
 import java.awt.*;
-PImage cat;
 
+PImage cat;
 Capture video;
 OpenCV opencv;
 
@@ -10,7 +10,7 @@ void setup() {
   size(640, 480);
   video = new Capture(this, 640/2, 480/2);
   opencv = new OpenCV(this, 640/2, 480/2);
-  opencv.loadCascade(OpenCV.CASCADE_FRONTALFACE);  
+  opencv.loadCascade(OpenCV.CASCADE_FRONTALFACE);
   cat = loadImage("kitteh.png");
   video.start();
 }
@@ -37,4 +37,3 @@ void draw() {
 void captureEvent(Capture c) {
   c.read();
 }
-

@@ -2,11 +2,9 @@ void setup() {
   size(320, 480);
   noStroke();
   background(50, 10, 15);
-frameRate(6);
+  frameRate(6);
 }
 void draw() {
-
-  
   fill(random(200, 255), 0, 0, 50);
   beginShape(TRIANGLE_FAN);
   vertex(width/2, height/3);

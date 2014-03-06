@@ -11,6 +11,7 @@ int target_y = int(random(15, 465));
 
 void setup() {
   size(480, 480);
+  noStroke();
 }
 
 void draw() {
@@ -18,21 +19,18 @@ void draw() {
   fill(255);
   ellipse(target_x, target_y, 15, 15);
 
-
-  noStroke();
   //TRIPPIN BALLS
   //fill(int(random(255)), int(random(255)), int(random(255)));
-
   //STANDARD
   fill(255, 215, 10);
 
   //makes the jaw move
   if (d == 0) {
-    i --; 
+    i --;
     j++;
   }
   else {
-    i ++; 
+    i ++;
     j --;
   }
   if (i == 0) {
@@ -43,26 +41,26 @@ void draw() {
   }
 
   if (x < target_x) {
-    arc(x, y, 50, 50, radians(i), radians(j), PIE); 
+    arc(x, y, 50, 50, radians(i), radians(j), PIE);
     fill(0);
     ellipse(x, y-15, 5, 5);
     x++;
   }
 
   else if (x > target_x) {
-    arc(x, y, 50, 50, radians(i+180), radians(j+180), PIE); 
+    arc(x, y, 50, 50, radians(i+180), radians(j+180), PIE);
     fill(0);
     ellipse(x, y-15, 5, 5);
     x--;
   }
   else if (y > target_y) {
-    arc(x, y, 50, 50, radians(i+270), radians(j+270), PIE); 
+    arc(x, y, 50, 50, radians(i+270), radians(j+270), PIE);
     fill(0);
     ellipse(x+15, y, 5, 5);
     y--;
   }
   else if (y < target_y) {
-    arc(x, y, 50, 50, radians(i+90), radians(j+90), PIE); 
+    arc(x, y, 50, 50, radians(i+90), radians(j+90), PIE);
     fill(0);
     ellipse(x+15, y, 5, 5);
     y++;

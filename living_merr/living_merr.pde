@@ -15,6 +15,5 @@ void draw() {
 }
 
 void mousePressed() {
-  saveFrame();
+  saveFrame("/saves/merr####.jpg");
 }
-
