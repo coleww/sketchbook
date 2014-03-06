@@ -22,10 +22,8 @@ void setup() {
 void draw() {
   fill(0, 1);
   rect(0, 0, width, height);
-
+  // or total wipe
   //background(0);
-  
-  
 
   moveAllWalkers();
   drawNetwork();
@@ -79,41 +77,47 @@ void mousePressed() {
 }
 
 void keyPressed() {
-println(keyCode);
-  if (keyCode == 90) {//z
+  println(keyCode);
+
+  switch(keyCode) {
+  case 90://z
     println("closer x is cheaper");
     mode = 1;
-  }
-  if (keyCode == 88) {//x
+    break;
+
+  case 88://x
     println("closer y is cheaper");
     mode = 2;
-  }
-  if (keyCode == 67) {//c
+    break;
+
+  case 67://c
     println("center is cheaper");
     mode = 3;
-  }
-  if (keyCode == 86){//v
+    break;
+
+  case 86://v
     println("distance == cost");
     mode = 0;
-  }
-  if (keyCode == 66){//b
+    break;
+
+  case 66://b
     if (STROKE_WEIGHT > 1){
       println("THINNER");
       STROKE_WEIGHT --;
       strokeWeight(STROKE_WEIGHT);
     }
-  }
+    break;
   
-   if (keyCode == 78){//n    
+  case 78://n    
    if (STROKE_WEIGHT < 15){
-     println("BOLDER");
+      println("BOLDER");
       STROKE_WEIGHT ++;
       strokeWeight(STROKE_WEIGHT);
     }
-   }
+    break;
    
-   if (keyCode == 83){
+  case 83:
     saveFrame("prims###.jpg"); 
-   }
+    break;
+  }
 }
-

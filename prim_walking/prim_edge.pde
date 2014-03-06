@@ -29,24 +29,15 @@ class Edge {
       if (a.x > xCenter - window && a.x < xCenter + window && a.y > yCenter - window && a.y < yCenter + window) {
         baseCost *= 0.1;
       }
-
       if (b.x > xCenter - window && b.x < xCenter + window &&  b.y > yCenter - window && b.y < yCenter + window) {
         baseCost *= 0.1;
       }
     }
-
-
-
     return baseCost;
   }
 
   void drawLine() {
-    //    stroke(255);
     stroke(a.c);
     line(a.x, a.y, b.x, b.y);
-    
-    //how to bezier good?
-//    bezier(a.x, a.y, a.x - b.x, a.y - b.y, b.x - a.x, b.y - a.y, b.x, b.y);
   }
 }
-
