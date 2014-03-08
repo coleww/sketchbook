@@ -8,14 +8,29 @@ Walker[] points = new Walker[numPoints];
 void setup() {
   size(750, 500);
   background(0);
+
+
   for (int i = 0; i < points.length; i++) {
     points[i] = new Walker();
   }
+  boolean[] pointsAdded = new boolean[numPoints];
+  boolean allPointsAdded = false;
 
-  //guarantee that every point is in an edge somehow?
-  //is that the null pointer exception?
-  for (int j = 0; j < edges.length; j++) {
-    edges[j] = new Edge(randomWalker(), randomWalker());
+  while (!allPointsAdded) {
+    for (int j = 0; j < edges.length; j++) {
+      int a = int(random(points.length));
+      int b = int(random(points.length));
+      pointsAdded[a] = true;
+      pointsAdded[b] = true;
+      edges[j] = new Edge(points[a], points[b]);
+    }
+    allPointsAdded = true;
+    //gotta be a faster way wtf java
+    for (int k = 0; k < pointsAdded.length; k++) {
+      if (!pointsAdded[k]) {
+        allPointsAdded = false;
+      }
+    }
   }
 }
 
@@ -43,12 +58,13 @@ void drawNetwork() {
   ArrayList<Walker> connectedVertices = new ArrayList<Walker>();
   ArrayList<Edge> chosenEdges = new ArrayList<Edge>();
   connectedVertices.add(randomWalker());
-
+  //                                    THIS IS WHY. RIGHT HERE. 
   while (connectedVertices.size () < numPoints) {
     Edge minEdge = null;
     for (int i = 0; i < connectedVertices.size(); i++) {
-      for (int j = 0; j < connectedVertices.get(i).edges.size(); j++) {
-        Edge currentEdge = connectedVertices.get(i).edges.get(j);
+      Walker vertice = connectedVertices.get(i);
+      for (int j = 0; j < vertice.edges.size(); j++) {
+        Edge currentEdge = vertice.edges.get(j);
         if (connectedVertices.contains(currentEdge.a) && connectedVertices.contains(currentEdge.b)) {
         } 
         else if (minEdge == null || currentEdge.cost() < minEdge.cost()) {
@@ -58,7 +74,6 @@ void drawNetwork() {
     }
 
     chosenEdges.add(minEdge);
-
     if (connectedVertices.contains(minEdge.a)) {
       connectedVertices.add(minEdge.b);
     } 
@@ -101,23 +116,24 @@ void keyPressed() {
     break;
 
   case 66://b
-    if (STROKE_WEIGHT > 1){
+    if (STROKE_WEIGHT > 1) {
       println("THINNER");
       STROKE_WEIGHT --;
       strokeWeight(STROKE_WEIGHT);
     }
     break;
-  
+
   case 78://n    
-   if (STROKE_WEIGHT < 15){
+    if (STROKE_WEIGHT < 15) {
       println("BOLDER");
       STROKE_WEIGHT ++;
       strokeWeight(STROKE_WEIGHT);
     }
     break;
-   
+
   case 83:
     saveFrame("prims###.jpg"); 
     break;
   }
 }
+
