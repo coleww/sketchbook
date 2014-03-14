@@ -1,5 +1,5 @@
-int numPoints = 250;
-int numEdges = 750;
+int numPoints = 70;
+int numEdges = 250;
 int mode = 0;
 int STROKE_WEIGHT = 1;
 Edge[] edges = new Edge[numEdges];
