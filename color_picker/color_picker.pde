@@ -29,6 +29,8 @@ void setup() {
   
   color[] colors = pickColors("test.png", numColors, true);
   
+  color randomColor = colors[int(random(0, colors.length))]
+  
   for (int i = 0; i * bar < width; i += 1) {
     fill(colors[i]);
     rect(i * bar, 0, bar, width);
