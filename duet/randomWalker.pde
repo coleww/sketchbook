@@ -1,12 +1,10 @@
 class Walker {
   int size = 25;
-  int[] dirs = {
-    -1, 0, 1
-  };
-  int xdir = dirs[int(random(dirs.length))];
-  int ydir = dirs[int(random(dirs.length))];
-  int x = int(random(0, width));
-  int y = int(random(0, height));
+  float[] dirs = genDirs();
+  float xdir = dirs[int(random(dirs.length))];
+  float ydir = dirs[int(random(dirs.length))];
+  float x = random(0, width);
+  float y = random(0, height);
 
   void move() {
     x += xdir;
@@ -14,16 +12,21 @@ class Walker {
 
     //bounce back from edges
     if (x < 0 + size || x > width - size) {
-      xdir *= -1;
+      xdir *= -2;
     } 
     if (y < 0 + size || y > height - size) {
-      ydir *= -1;
+      ydir *= -2;
     }
   }
 
   void adjustDir() {
+    dirs = genDirs();
     xdir = dirs[int(random(dirs.length))];
     ydir = dirs[int(random(dirs.length))];
+  }
+  
+  float[] genDirs() {
+    return new float[] {random(0,5) * -1, random(0, 5), 0};
   }
 
 }

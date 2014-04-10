@@ -6,7 +6,7 @@ AudioInput in;
 
 BeatDetect beat;
 FFT fft;
-int numWalkers = 25;
+int numWalkers = 100;
 Walker[] walkers = new Walker[numWalkers];
 float lowCutoff = 100;
 float midCutoff = 1000;
@@ -24,7 +24,7 @@ void setup() {
   fft = new FFT(in.bufferSize(), in.sampleRate());
   createWalkers();
   noStroke();
-  background(0);
+  background(255);
 }
 
 void draw()
@@ -40,8 +40,10 @@ void draw()
     int r = int(random(0, 100));
     int g = int(random(0, 100));
     int b = int(random(0, 100));
-    int a = int(fft.calcAvg(50, 1000));
-
+    int a = int(fft.calcAvg(50, 1000)) * 2;
+    if (beat.isOnset()) {
+      filly = int(random(0, 3));
+    } 
     int baller =    int(random(0, 155)) + 100;
     switch(filly) {
     case 0:
@@ -54,23 +56,19 @@ void draw()
       b = baller;
       break;
     }
-
-    if (beat.isOnset()) {
       fill(r, g, b, a);
       ellipse(walkers[i].x, walkers[i].y, int(fft.calcAvg(50, 2000)) / 2, int(fft.calcAvg(50, 2000)) / 2);
-      walkers[i].adjustDir();
-      filly = int(random(0, 3));
-    } 
-    else {
-      fill(r, g, b, 255);
-      ellipse(walkers[i].x, walkers[i].y, int(fft.calcAvg(250, 20000)), int(fft.calcAvg(250, 20000)));
-    }
-    
+
+//    else {
+//      fill(0, a);
+//      ellipse(walkers[i].x, walkers[i].y, int(fft.calcAvg(250, 20000)), int(fft.calcAvg(250, 20000)));
+//    }
+//    
     
 //     if (beat.isOnset()) {
 //      fill(int(random(0, 255)), int(random(0, 255)), int(random(0, 255)), 75);
 //      ellipse(walkers[i].x, walkers[i].y, int(fft.calcAvg(50, 2000)) / 2, int(fft.calcAvg(50, 2000)) / 2);
-//      walkers[i].adjustDir();
+      walkers[i].adjustDir();
 //    } 
 //    else {
 //      fill(255, 75);
